@@ -138,15 +138,16 @@ bool Game::collisionCheck(sf::Vector2i click, sf::Sprite sprite)
 {
 	bird.getPosition();
 
+
+	
+
 //sprite_left = 
 //sprite_right = 
 //sprite_top = 
 //sprite_bottom =
 
 	if (click.x < bird.getPosition().x + bird.getGlobalBounds().width &&
-		click.x < bird.getPosition().y + bird.getGlobalBounds().height &&
-		click.y < bird.getPosition().y + bird.getGlobalBounds().height)
-		
+		click.y < bird.getPosition().y + bird.getGlobalBounds().height)		
 	{
 		return true;
 	}

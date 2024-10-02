@@ -40,6 +40,7 @@ class Game
   bool reverse = false;
   bool collisionCheck(sf::Vector2i click, sf::Sprite sprite);
   void spawn();
+  
 
 
 
