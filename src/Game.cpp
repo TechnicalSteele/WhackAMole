@@ -100,7 +100,33 @@ void Game::mouseClicked(sf::Event event)
 
 void Game::keyPressed(sf::Event event)
 {
+	if ((event.key.code == sf::Keyboard::Left ||
+		event.key.code == sf::Keyboard::Right))
+	{
+		play_selected = !play_selected;
+		if (play_selected)
+		{
+			play_option.setString("> Play <");
+			exit_option.setString("Quit");
+		}
+		else
+		{
+			play_option.setString("Play");
+			exit_option.setString("> Quit <");
+	}
 
+	}
+	else if (event.key.code == sf::Keyboard::Enter)
+	{
+		if (play_selected)
+		{
+			in_menu = false;
+		}
+		else
+		{
+			window.close();
+		}
+	}
 
 }
 

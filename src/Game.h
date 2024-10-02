@@ -29,6 +29,8 @@ class Game
   sf::Text exit_option;
 
   bool in_menu = false;
+  bool play_selected = false;
+
 
 
  
