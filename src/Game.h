@@ -16,8 +16,12 @@ class Game
   void mouseClicked(sf::Event event);
   void keyPressed(sf::Event event);
   void keyReleased(sf::Event event);
+  
+  
 
  private:
+ 
+	 
   sf::RenderWindow& window;
   sf::Sprite bird;
   sf::Sprite background;
@@ -27,9 +31,15 @@ class Game
   sf::Text title_text;
   sf::Text play_option;
   sf::Text exit_option;
+  sf::Text score;
 
   bool in_menu = false;
   bool play_selected = false;
+  int speed = 500;
+  int score = 0;
+  bool reverse = false;
+  bool collisionCheck(sf::Vector2i click, sf::Sprite sprite);
+  void spawn();
 
 
 

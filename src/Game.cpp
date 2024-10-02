@@ -72,7 +72,30 @@ void Game::text()
 
 void Game::update(float dt)
 {
+	
+	if ((bird.getPosition().x > (window.getSize().x - bird.getGlobalBounds().width)) ||
+		(bird.getPosition().x < 0))
+	{
+		reverse = !reverse;
+	}
+	if (reverse)
+	{
+		bird.move(-1.0f * speed * dt, 0);
+		
+		bird.setTextureRect(sf::IntRect(
+			bird.getLocalBounds().width,
+			0,
+			-bird.getLocalBounds().width,
+			bird.getLocalBounds().height));
+	}
+	else
+	{
+		bird.move(1.0f * speed * dt, 0);
+		
+		bird.setTextureRect(sf::IntRect(
+			0, 0, bird.getLocalBounds().width, bird.getLocalBounds().height));
 
+	}
 }
 
 void Game::render()
@@ -94,8 +117,24 @@ void Game::mouseClicked(sf::Event event)
 {
   //get the click position
   sf::Vector2i click = sf::Mouse::getPosition(window);
+  if (collisionCheck(click, bird))
+  {
+	  spawn();
+	  
 
+  }
 
+}
+
+bool Game::collisionCheck(sf::Vector2i click, sf::Sprite sprite)
+{
+	if (click.x && click.y == bird.getGlobalBounds().width,
+		bird.getGlobalBounds().height)
+	{
+		return true;
+	}
+		
+	return false;
 }
 
 void Game::keyPressed(sf::Event event)
@@ -136,5 +175,9 @@ void Game::keyReleased(sf::Event event)
 
 }
 
-
-
+void Game::spawn()
+{
+	float xpos = std::rand() % int(window.getSize().x - bird.getGlobalBounds().width);
+	float ypos = std::rand() % int(window.getSize().y - bird.getGlobalBounds().height);
+	bird.setPosition(xpos, ypos);
+}
