@@ -31,7 +31,7 @@ class Game
   sf::Text title_text;
   sf::Text play_option;
   sf::Text exit_option;
-  sf::Text score;
+  sf::Text score_text;
 
   bool in_menu = false;
   bool play_selected = false;
