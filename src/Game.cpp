@@ -67,13 +67,13 @@ void Game::text()
 		window.getSize().x / 2 - exit_option.getGlobalBounds().width / 2,
 		window.getSize().y / 4 - exit_option.getGlobalBounds().height / 4);
 
-	score_text.setString(":" + int(score));
+	score_text.setString(":" + std::to_string(score));
 	score_text.setFont(font);
 	score_text.setCharacterSize(50);
 	score_text.setFillColor(sf::Color(0, 0, 0, 255));
 	score_text.setPosition(
-		window.getSize().x / 6 - score_text.getGlobalBounds().width / 6,
-		window.getSize().y / 6 - score_text.getGlobalBounds().height / 6);
+		window.getSize().x / 10 - score_text.getGlobalBounds().width / 10,
+		window.getSize().y / 8 - score_text.getGlobalBounds().height / 8);
 }
 
 
@@ -137,21 +137,14 @@ void Game::mouseClicked(sf::Event event)
 bool Game::collisionCheck(sf::Vector2i click, sf::Sprite sprite)
 {
 	bird.getPosition();
-
-
-	
-
-//sprite_left = 
-//sprite_right = 
-//sprite_top = 
-//sprite_bottom =
-
-	if (click.x < bird.getPosition().x + bird.getGlobalBounds().width &&
-		click.y < bird.getPosition().y + bird.getGlobalBounds().height)		
+	sf::FloatRect birdBox = bird.getGlobalBounds();
+	if (birdBox.contains(click.x , click.y))
 	{
+		score++;
+		score_text.setString(":" + std::to_string(score));
 		return true;
+
 	}
-		
 	return false;
 }
 
